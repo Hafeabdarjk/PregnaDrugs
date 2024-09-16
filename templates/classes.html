@@ -1,0 +1,12 @@
+<!-- classes.html -->
+{% extends "layout.html" %}
+{% block body %}
+    <div class="class-container">
+        <h2>Select a Class</h2>
+        {% for class in classes %}
+            <a href="/drugs?class_id={{ class.class_id }}" class="class-shape">
+                <h3>{{ class.class_name }}</h3>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block body %}
+	<h1>Browse safe drugs in pregnancy <br> Using body Systems</h1>
+	
+	<!-- Grid of body system circles -->
+	<div class="grid-container">
+		{% for system in systems %}
+			<a href="/diseases?system_id={{ system.system_id }}" class="circle">
+				<img src="{{ url_for('static', filename=system.system_name | lower | replace(' ', '-') ~ '.jpg') }}" alt="{{ system.system_name }}">
+				<div class="system-name">{{ system.system_name }}</div>
+			</a>
+		{% endfor %}
+	</div>
+{% endblock %}
+		

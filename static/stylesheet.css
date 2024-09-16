@@ -13,6 +13,7 @@ body {
 	padding: 10px 20px;
 	position: fixed; /* Fixes the search bar at the top */
 	top: 0;
+	height: 40 px;
 	width: 100%;
 	z-index: 1000; /* Ensures it's on top of other content */
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -34,7 +35,7 @@ body {
 
 .search-container button {
 	padding: 0 20px;
-	background-color:   #ff0066; /* Pink background for the button */
+	background-color: #ff0066; /* Pink background for the button */
 	border: none;
 	border-radius: 0 4px 4px 0;
 	cursor: pointer;
@@ -61,28 +62,22 @@ body {
 	background-size: cover;
 	background-position: center;
 	background-attachment: fixed;
+	box-shadow: inset 0 0 0 2000px rgba(255, 0, 102, 0.5);
 	min-height: 100vh;
 	position: relative;
 }
 
-/* Transparent overlay */
-.overlay {
-	background-color: rgba(255, 0, 102, 0.5); /* 50% transparent black */
-	position: relative;
-	top: 0;
-	left: 0;
-	width: 100%; /* Ensure it covers the full width */
-	height: 100vh; /* Ensure it covers the full viewport height */
-	z-index: 1;
-	overflow-y: auto;
-}
-
 /* Push content down to avoid overlap with fixed search bar */
 .content {
-	margin-top: 50px; /* Increased margin to accommodate the search bar */
-	padding: 20px;
+	padding: 40px;
 	position: relative;
 	z-index: 2;
+    overflow-y: auto; /* Enable scrolling within the content area */
+}
+
+a {
+	text-decoration: none;
+	color: navy;
 }
 
 /* Grid container for circles */
@@ -94,7 +89,7 @@ body {
 	padding: 20px;
 }
 
-/* Circle styling */
+/* system styling */
 .circle {
 	width: 200px;
 	height: 200px;
@@ -143,6 +138,58 @@ body {
 	opacity: 1;
 }
 
+/* disease styling */
+.disease-container, .class-container, .drug-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+	overflow-y: auto;
+}
+
+.disease-shape, .class-shape {
+    width: 40vw;
+    height: 20px;
+    background-color: #ffcccb;
+    border: 2px solid #99004d;
+    border-radius: 40px;
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease
+}
+
+.disease-shape:hover, .class-shape:hover {
+    transform: scale(1.05);
+}
+
+.drug-card {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #ffcccb;
+    border: 1px solid #99004d;
+    border-radius: 10px;
+    margin: 10px;
+    transition: background-color 0.3s;
+}
+
+.drug-card:hover {
+    background-color: #ffc0cb;
+}
+
+.drug-details {
+    margin-left: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
 /* Responsive Design */
 @media (max-width: 600px) {
 	.grid-container {
@@ -157,4 +204,7 @@ body {
 	.circle .system-name {
 		font-size: 16px;
 	}
+	
+	.disease-shape {
+        width: 90vw;
 }

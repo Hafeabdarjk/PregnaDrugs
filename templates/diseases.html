@@ -1,4 +1,11 @@
-{% extends "layout.html"}
+{% extends "layout.html" %}
 {% block body %}
-
+    <div class="disease-container">
+        <h2>Select a Disease</h2>
+        {% for disease in diseases %}
+            <a href="/classes?disease_id={{ disease.disease_id }}" class="disease-shape">
+                <h3>{{ disease.disease_name }}</h3>
+            </a>
+        {% endfor %}
+    </div>
 {% endblock %}

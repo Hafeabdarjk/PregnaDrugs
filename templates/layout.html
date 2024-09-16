@@ -7,6 +7,41 @@
     <title>PregnaDrugs</title>
 	<link rel="icon" type="image/x-icon" href="../static/favicon.ico">
 	<link rel="Stylesheet" type="text/css" href="../static/stylesheet.css">
+	<script>
+    function fetchDrugDetails(drugId) {
+        var detailsDiv = document.getElementById("details-" + drugId);
+        
+        // Check if the details are already displayed
+        if (detailsDiv.style.display === "block") {
+            detailsDiv.style.display = "none";  // Hide details
+            return;
+        }
+
+        // If the details are not loaded yet, fetch them via AJAX
+        if (!detailsDiv.innerHTML.trim()) {
+            fetch('/drug_details/' + drugId)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.drug_details) {
+                        // Display the drug details
+                        detailsDiv.innerHTML = `<p>${data.drug_details}</p>`;
+                        detailsDiv.style.display = "block";  // Show details
+                    } else {
+                        detailsDiv.innerHTML = "<p>No details available for this drug.</p>";
+                        detailsDiv.style.display = "block";  // Show message if no details
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching drug details:", error);
+                    detailsDiv.innerHTML = "<p>Failed to load drug details.</p>";
+                    detailsDiv.style.display = "block";  // Show error message
+                });
+        } else {
+            detailsDiv.style.display = "block";  // Show details if already fetched
+        }
+    }
+	</script>
+
 </head>
 <body>
 
@@ -25,12 +60,10 @@
 
     <!-- Header and Body System Circles -->
 	<div class="background-image">
-		<div class="overlay">
 			<div class="content">
 				{% block body %}
 				{% endblock %}	
 			</div>
-		</div>
 	</div>
 
 </body>

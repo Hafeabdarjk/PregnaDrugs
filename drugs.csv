@@ -1,0 +1,65 @@
+drug_id,drug,class_id,drug_details
+1111,Salbutamol (SABA) {Inhaled},111,NULL
+1112,Formetrol (LABA) {Inhaled},111,NULL
+1121,Prednisone - Methylprednisolone {Oral},112,"Women who are currently receiving or have recently required systemic corticosteroids should receive intravenous corticosteroids during labor and for 24 hours after delivery to prevent adrenal crisis. Prolonged use of systemic steroids has been associated with pregnancy-related complications, especially in the first trimester. But systemic steroids if indicated they should be used the same as in non-pregnancy (Evidence C)."
+1122,Budesonide {Inhaled},112,"Based on available data, inhaled budesonide does not appear to increase the risk of congenital malformations in humans. Recent data on inhaled glucocorticoids support its relative safety although there is the potential risk for offspring endocrine and metabolic disturbances."
+1131,Ipratropium (SAMA) {Inhaled},113,"Ipratropium is negligibly absorbed systemically following oral inhalation; therefore, maternal use is not expected to result in fetal exposure to the drug"
+1141,Theophylline,114,Theophylline is safe in pregnancy at recommended doses. It may cause irritability and apnoea in the neonate.  Serum theophylline levels should be routinely  monitored as pregnancy may alter the pharmacokinetics of the drug.
+1151,Montelukast,115,Available data from published prospective and retrospective cohort studies over decades in pregnant women have not established a drug-associated risk of major birth defects
+1211,Budesonide,121,NULL
+1221,Loratidine,122,NULL
+1222,Cetrizine,122,NULL
+1231,Montelukast,123,Available data from published prospective and retrospective cohort studies over decades in pregnant women have not established a drug-associated risk of major birth defects
+1241,Azelastine,124,NULL
+1251,Oxymetazoline {intranasal},125,"Use cautiously (have not, as yet, been shown to be a risk for the fetus(insufficientdata))"
+1252,Xylometazoline {intranasal},125,"Use cautiously (have not, as yet, been shown to be a risk for the fetus(insufficientdata))"
+1311,Dextromethorphan,131,"Based on the studies reviewed, use of dextromethorphan in pregnancy is not expected to increase the chance of birth defects above the background risk."
+1312,Diphenhydramine,131,The use of diphenhydramine during pregnancy can cause temporary symptoms in newborns soon after birth. These symptoms are sometimes referred to as withdrawal. There are a few reports of withdrawal symptoms (tremors and diarrhea) in infants who were exposed to diphenhydramine daily throughout pregnancy. Diphenhydramine passes into breastmilk in small amounts. This medication can cause sleepiness in adults as well as the nursing baby. Short-term or occasional use of diphenhydramine is not expected to increase the chance of side effects during breastfeeding.
+1313,Chlorpheniramine,131,
+1321,N-Acetyl Cysteine,132,
+1322,Ambroxol,132,
+1323,Bromhexine,132,
+2111,Megaldrate,211,
+2121,Famotidine,212,
+2131,Omeprazole,213,
+2141,Sucralfate,214,
+2211,Metoclopromide,221,
+2221,Ondansetron,222,
+2231,Doxylamine,223,
+2232,Meclizine,223,
+2233,Cyclizine,223,
+2241,Corticoadrenal Extract,224,
+2311,ORS,231,
+2321,Azithromycin,232,
+2322,"Cefixime, Cefotaxime, Ceftriaxone",232,
+2323,Metronidazole #,232,
+2324,Mebendazole,232,
+2331,Loperamide,233,
+2341,"Kaolin-Pectin, Smecta",234,
+2351,Zinc,235,
+2352,Propiotics,235,
+2361,Bisacodyl,236,
+2362,Na Picosulfate,236,
+2421,"Psyllium, Bran",242,
+2431,"Lactulose, Macrogol",243,
+2441,Mg Sulfate,244,
+2451,Docusate Na,245,
+2511,Drotaverine,251,
+2512,Mebeverine,251,
+2521,Charcoal,252,
+2522,"Simethicone, Dimethicone",252,
+,,,
+3111,Mg Citrate,311,
+3112,K Na H Citrate,311,
+3113,Piperazine Citrate,311,
+3121,Vitamin C,312,
+,,,
+4111,Ibuprofen ,411,
+4121,Paracetamol,412,
+,,,
+5111,"Penicillins, Cephalosprins, Monobactams, Carbapenems",511,
+5121,"Erythromycin, Claritthromycin, Azithromycin",512,
+5131,Clindamycin,513,
+5141,Metronidazole,514,
+5151,Nitrofurantoin,515,
+5152,Fosfomycin,515,
