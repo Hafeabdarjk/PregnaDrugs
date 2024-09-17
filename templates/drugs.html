@@ -1,18 +1,16 @@
 <!-- drugs.html -->
 {% extends "layout.html" %}
 {% block body %}
-    <div class="drug-container">
-        <h2>Safe Drugs</h2>
-        {% for drug in drugs %}
-            <div class="drug-card" onclick="fetchDrugDetails({{ drug.drug_id }})">
-                <h3>{{ drug.drug_name }}</h3>
-            </div>
-			
-			 <!-- Empty div where drug details will be inserted -->
-            <div id="details-{{ drug.drug_id }}" class="drug-details" style="display: none;">
-                <!-- The drug details will be dynamically inserted here -->
-            </div>
-        {% endfor %}
-    </div>
-	
+	<div class="drug-container">
+    <h2>Available Safe Drugs</h2>
+    {% for drug in drugs %}
+        <div class="drug-card" id="drug-card-{{ drug.drug_id }}">
+            <h3>{{ drug.drug_name }}</h3>
+        </div>
+
+        <!-- Empty div where drug details will be inserted -->
+        <div id="details-{{ drug.drug_id }}" class="drug-details" style="display: none;"></div>
+    {% endfor %}
+	</div>
+
 {% endblock %}

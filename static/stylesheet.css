@@ -169,25 +169,37 @@ a {
 }
 
 .drug-card {
+	z-index: 2;
     cursor: pointer;
-    padding: 10px;
-    background-color: #ffcccb;
-    border: 1px solid #99004d;
+    padding: 0px 15px;
+    background-color: #f8d7da; /* Light pink background */
+    border: 1px solid #99004d; /* Dark pink border */
     border-radius: 10px;
     margin: 10px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .drug-card:hover {
-    background-color: #ffc0cb;
+    background-color: #f1b0b7; /* Slightly darker pink on hover */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow effect on hover */
 }
 
 .drug-details {
-    margin-left: 20px;
-    padding: 10px;
-    background-color: #f9f9f9;
+    width: 66%; /* 2/3 of the screen */
+    margin: -45px 20px 20px;
+    padding: 56px;
+    background-color: #f9f9f9; /* Light background for the details */
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.drug-details p {
+    margin: 0; /* Remove extra spacing between paragraphs */
+    color: #333; /* Darker text for better readability */
 }
 
 /* Responsive Design */

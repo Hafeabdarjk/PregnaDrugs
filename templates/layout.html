@@ -8,39 +8,56 @@
 	<link rel="icon" type="image/x-icon" href="../static/favicon.ico">
 	<link rel="Stylesheet" type="text/css" href="../static/stylesheet.css">
 	<script>
-    function fetchDrugDetails(drugId) {
-        var detailsDiv = document.getElementById("details-" + drugId);
-        
-        // Check if the details are already displayed
-        if (detailsDiv.style.display === "block") {
-            detailsDiv.style.display = "none";  // Hide details
-            return;
+    document.addEventListener("DOMContentLoaded", function() {
+        console.log("JavaScript loaded successfully");
+
+        function fetchDrugDetails(drugId) {
+            console.log("fetchDrugDetails triggered for drug ID:", drugId);
+            
+            var detailsDiv = document.getElementById("details-" + drugId);
+            console.log("Target details div:", detailsDiv);
+
+            if (detailsDiv.style.display === "block") {
+                detailsDiv.style.display = "none";  // Hide details
+                return;
+            }
+
+            if (!detailsDiv.innerHTML.trim()) {
+                fetch('/drug_details/' + drugId)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.drug_details) {
+                            detailsDiv.innerHTML = `<p>${data.drug_details}</p>`;
+                            detailsDiv.style.display = "block";  // Show details
+                        } else {
+                            detailsDiv.innerHTML = "<p>No details available for this drug.</p>";
+                            detailsDiv.style.display = "block";  // Show message if no details
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error fetching drug details:", error);
+                        detailsDiv.innerHTML = "<p>Failed to load drug details.</p>";
+                        detailsDiv.style.display = "block";  // Show error message
+                    });
+            } else {
+                detailsDiv.style.display = "block";  // Show details if already fetched
+            }
         }
 
-        // If the details are not loaded yet, fetch them via AJAX
-        if (!detailsDiv.innerHTML.trim()) {
-            fetch('/drug_details/' + drugId)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.drug_details) {
-                        // Display the drug details
-                        detailsDiv.innerHTML = `<p>${data.drug_details}</p>`;
-                        detailsDiv.style.display = "block";  // Show details
-                    } else {
-                        detailsDiv.innerHTML = "<p>No details available for this drug.</p>";
-                        detailsDiv.style.display = "block";  // Show message if no details
-                    }
-                })
-                .catch(error => {
-                    console.error("Error fetching drug details:", error);
-                    detailsDiv.innerHTML = "<p>Failed to load drug details.</p>";
-                    detailsDiv.style.display = "block";  // Show error message
-                });
-        } else {
-            detailsDiv.style.display = "block";  // Show details if already fetched
-        }
-    }
+        // Programmatically attach click events to all drug cards
+        var drugCards = document.querySelectorAll('.drug-card');
+        drugCards.forEach(function(card) {
+            var drugId = card.id.split('-')[2];  // Get drug ID from the card's ID
+            card.addEventListener('click', function() {
+                fetchDrugDetails(drugId);  // Call the function with the correct ID
+            });
+        });
+
+    });
+	
+	
 	</script>
+	
 
 </head>
 <body>
@@ -65,6 +82,5 @@
 				{% endblock %}	
 			</div>
 	</div>
-
 </body>
 </html>
