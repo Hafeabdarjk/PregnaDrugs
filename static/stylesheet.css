@@ -203,6 +203,9 @@ a {
 
 /* Responsive Design */
 @media (max-width: 600px) {
+	.background-image {
+		background-image: url('bg_mobile.jpg');
+	}	
 
 	.circle {
 		width: 120px;
@@ -214,6 +217,15 @@ a {
 	}
 	
 	.disease-shape {
-        width: 90vw;
+        width: 45vw;
+	}
+
+	.search-container form {
+		max-width: 80%;
+		position: relative;
+    	left: -20px;
+	}
+	.search-container input[type="text"]{
+		font-size: 14px;
 	}
 }
