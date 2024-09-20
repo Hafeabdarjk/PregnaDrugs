@@ -83,7 +83,6 @@ a {
 /* Grid container for circles */
 .grid-container {
 	display: grid;
-	grid-template-columns: repeat(1);
 	gap: 20px;
 	justify-content: center;
 	padding: 20px;
@@ -204,9 +203,6 @@ a {
 
 /* Responsive Design */
 @media (max-width: 600px) {
-	.grid-container {
-		grid-template-columns: repeat(2, 1fr);
-	}
 
 	.circle {
 		width: 120px;
@@ -219,4 +215,5 @@ a {
 	
 	.disease-shape {
         width: 90vw;
+	}
 }
