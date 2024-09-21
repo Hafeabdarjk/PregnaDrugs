@@ -6,6 +6,18 @@ body {
 	text-align: center;
 }
 
+.clearfix {
+	overflow: auto;
+  }
+
+.logo{
+	height: 50px;
+    position: absolute;
+    float: left;
+    left: 5px;
+    top: 5px;
+}
+
 /* Serach */
 /* Search Container Styles */
 .search-container {

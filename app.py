@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
 
 app = Flask(__name__)
@@ -16,6 +16,39 @@ def systems():
     systems = conn.execute('SELECT * FROM systems').fetchall()
     conn.close()
     return render_template("systems.html", systems=systems)
+
+@app.route('/search')
+def search():
+    query = request.args.get('search', '').strip()  # Get the search term from the form input
+    conn = get_db_connection()
+
+    # Find the class by name
+    pharmacological_class = conn.execute('''
+        SELECT class_id FROM classes WHERE class_name LIKE ?
+    ''', ('%' + query + '%',)).fetchone()
+
+    conn.close()
+
+    # If the class is found, redirect to the /drugs page with the class_id
+    if pharmacological_class:
+        return redirect(url_for('drugs', class_id=pharmacological_class['class_id']))
+    else:
+        # If no class is found, you could return a "no results" page or redirect to a generic page
+        return render_template('no_results.html', query=query)
+
+@app.route('/autocomplete')
+def autocomplete():
+    search_term = request.args.get('term', '').strip()  # Get the typed input
+    conn = get_db_connection()
+
+    # Fetch class names that match the typed input
+    class_names = conn.execute('''
+        SELECT class_name FROM classes WHERE class_name LIKE ?
+    ''', ('%' + search_term + '%',)).fetchall()
+    conn.close()
+
+    # Return a list of class names as a JSON response
+    return {"suggestions": [class_name['class_name'] for class_name in class_names]}
 
 # Route for displaying diseases of a selected system
 @app.route('/diseases')

@@ -76,6 +76,7 @@
             });
     
         });
+        
     </script>    
 	
 
@@ -83,9 +84,10 @@
 <body>
 
     <!-- Search Bar at the Top -->
-    <div class="search-container">
+    <div class="search-container clearfix">
+        <img src="../static/logo.svg" alt="this is the website lgo" class="logo">
         <form action="/search" method="GET">
-            <input type="text" placeholder="Search pharmacological classes..." name="search">
+            <input type="text" placeholder="Search by pharmacological classes..." name="search">
             <button type="submit">
                 <!-- Search Icon (SVG) -->
                 <svg viewBox="0 0 512 512">
@@ -93,6 +95,7 @@
                 </svg>
             </button>
         </form>
+        <ul id="suggestions-list" style="display:none;"></ul>
     </div>
 
     <!-- Header and Body System Circles -->
