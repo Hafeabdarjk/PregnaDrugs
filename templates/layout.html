@@ -76,7 +76,49 @@
             });
     
         });
-        
+        document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('search-input');
+    const suggestionsList = document.getElementById('suggestions-list');
+
+    searchInput.addEventListener('input', function() {
+        const searchTerm = searchInput.value.trim();
+
+        if (searchTerm.length > 1) {
+            // Send AJAX request to the /autocomplete route
+            fetch(`/autocomplete?term=${encodeURIComponent(searchTerm)}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Clear previous suggestions
+                    suggestionsList.innerHTML = '';
+
+                    // If there are suggestions, show the list
+                    if (data.suggestions && data.suggestions.length > 0) {
+                        suggestionsList.style.display = 'block';
+
+                        // Create a list item for each suggestion
+                        data.suggestions.forEach(function(suggestion) {
+                            const listItem = document.createElement('li');
+                            listItem.textContent = suggestion;
+                            listItem.style.cursor = 'pointer';  // Add pointer for better UI
+                            listItem.addEventListener('click', function() {
+                                searchInput.value = suggestion;  // Update input with the clicked suggestion
+                                suggestionsList.style.display = 'none';  // Hide suggestions list
+                            });
+                            suggestionsList.appendChild(listItem);
+                        });
+                    } else {
+                        suggestionsList.style.display = 'none';  // Hide list if no suggestions
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching suggestions:', error);
+                });
+        } else {
+            // Hide suggestions if input is less than 2 characters
+            suggestionsList.style.display = 'none';
+        }
+    });
+});
     </script>    
 	
 
@@ -84,10 +126,10 @@
 <body>
 
     <!-- Search Bar at the Top -->
-    <div class="search-container clearfix">
+    <div class="search-container">
         <img src="../static/logo.svg" alt="this is the website lgo" class="logo">
         <form action="/search" method="GET">
-            <input type="text" placeholder="Search by pharmacological classes..." name="search">
+            <input type="text" placeholder="Search by pharmacological classes..." autocomplete="off" name="search" id="search-input">
             <button type="submit">
                 <!-- Search Icon (SVG) -->
                 <svg viewBox="0 0 512 512">
@@ -95,7 +137,7 @@
                 </svg>
             </button>
         </form>
-        <ul id="suggestions-list" style="display:none;"></ul>
+        <ul id="suggestions-list" class="suggestions-dropdown" style="display:none;"></ul>
     </div>
 
     <!-- Header and Body System Circles -->

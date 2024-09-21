@@ -6,18 +6,6 @@ body {
 	text-align: center;
 }
 
-.clearfix {
-	overflow: auto;
-  }
-
-.logo{
-	height: 50px;
-    position: absolute;
-    float: left;
-    left: 5px;
-    top: 5px;
-}
-
 /* Serach */
 /* Search Container Styles */
 .search-container {
@@ -25,10 +13,18 @@ body {
 	padding: 10px 20px;
 	position: fixed; /* Fixes the search bar at the top */
 	top: 0;
-	height: 40 px;
+	height: auto;
 	width: 100%;
 	z-index: 1000; /* Ensures it's on top of other content */
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo{
+	height: 50px;
+    position: absolute;
+    float: left;
+    left: 5px;
+    top: 5px;
 }
 
 .search-container form {
@@ -67,6 +63,37 @@ body {
 	width: 20px;
 	height: 20px;
 	fill: white;
+}
+
+/* Style for the search input and suggestions */
+.search-container {
+    position: relative;
+}
+
+#suggestions-list {
+    position: absolute;
+    top: 100%;  /* Position it directly below the input field */
+    left: 0;
+    width: 100%;  /* Match the width of the input field */
+    background-color: white;
+    border: 1px solid #ccc;
+    border-top: none;  /* Remove top border for a smooth look */
+    max-height: 150px;  /* Set a max height for scrolling */
+    overflow-y: auto;   /* Enable scrolling if the list is too long */
+    z-index: 999;  /* Ensure the dropdown appears above other content */
+    padding: 0;
+    margin: 0;
+    list-style: none;  /* Remove default list styles */
+}
+
+#suggestions-list li {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+}
+
+#suggestions-list li:hover {
+    background-color: #f0f0f0;  /* Highlight on hover */
 }
 
 /* Content */

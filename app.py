@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 import sqlite3
 
 app = Flask(__name__)
@@ -45,10 +45,11 @@ def autocomplete():
     class_names = conn.execute('''
         SELECT class_name FROM classes WHERE class_name LIKE ?
     ''', ('%' + search_term + '%',)).fetchall()
+
     conn.close()
 
     # Return a list of class names as a JSON response
-    return {"suggestions": [class_name['class_name'] for class_name in class_names]}
+    return jsonify(suggestions=[class_name['class_name'] for class_name in class_names])
 
 # Route for displaying diseases of a selected system
 @app.route('/diseases')
