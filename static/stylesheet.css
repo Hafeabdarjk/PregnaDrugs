@@ -249,4 +249,8 @@ a {
 	.search-container input[type="text"]{
 		font-size: 14px;
 	}
+
+	.logo{
+		display: none;
+	}
 }
