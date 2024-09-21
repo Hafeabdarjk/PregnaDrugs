@@ -185,15 +185,24 @@ a {
 }
 
 .drug-details {
-    width: 66%; /* 2/3 of the screen */
-    margin: -45px 0px 20px;
-    padding: 40px 30px;
+	width: 0px;
+    max-width: 66%; /* 2/3 of the screen */
+    margin: -45px 0px 10px;
+    padding: 40px 30px 20px;
     background-color: #f9f9f9; /* Light background for the details */
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     font-size: 16px;
     line-height: 1.6;
+	opacity: 0;
+    overflow: hidden;
+    transition: width 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.drug-details.show {
+    width: 66%; /* Final width is 2/3 of the screen */
+    opacity: 1; /* Fully visible */
 }
 
 .drug-details p {

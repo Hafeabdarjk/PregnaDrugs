@@ -8,55 +8,75 @@
 	<link rel="icon" type="image/x-icon" href="../static/favicon.ico">
 	<link rel="Stylesheet" type="text/css" href="../static/stylesheet.css">
 	<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        console.log("JavaScript loaded successfully");
-
-        function fetchDrugDetails(drugId) {
-            console.log("fetchDrugDetails triggered for drug ID:", drugId);
-            
-            var detailsDiv = document.getElementById("details-" + drugId);
-            console.log("Target details div:", detailsDiv);
-
-            if (detailsDiv.style.display === "block") {
-                detailsDiv.style.display = "none";  // Hide details
-                return;
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log("JavaScript loaded successfully");
+    
+            function fetchDrugDetails(drugId) {
+                console.log("fetchDrugDetails triggered for drug ID:", drugId);
+                
+                var detailsDiv = document.getElementById("details-" + drugId);
+                console.log("Target details div:", detailsDiv);
+    
+                // Toggle the display of the details using 'show' class
+                if (detailsDiv.classList.contains("show")) {
+                    detailsDiv.style.height = "0";  // Collapse the content
+                    detailsDiv.classList.remove("show");  // Hide details
+                    return;
+                }
+    
+                // Fetch details only if they haven't been loaded before
+                if (!detailsDiv.innerHTML.trim()) {
+                    fetch('/drug_details/' + drugId)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.drug_details) {
+                                detailsDiv.innerHTML = `<p>${data.drug_details}</p>`;
+                                showDetails(detailsDiv);  // Call the function to show details
+                            } else {
+                                detailsDiv.innerHTML = "<p>No details available for this drug.</p>";
+                                showDetails(detailsDiv);  // Show message if no details
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Error fetching drug details:", error);
+                            detailsDiv.innerHTML = "<p>Failed to load drug details.</p>";
+                            showDetails(detailsDiv);  // Show error message
+                        });
+                } else {
+                    showDetails(detailsDiv);  // Show details if already fetched
+                }
             }
-
-            if (!detailsDiv.innerHTML.trim()) {
-                fetch('/drug_details/' + drugId)
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.drug_details) {
-                            detailsDiv.innerHTML = `<p>${data.drug_details}</p>`;
-                            detailsDiv.style.display = "block";  // Show details
-                        } else {
-                            detailsDiv.innerHTML = "<p>No details available for this drug.</p>";
-                            detailsDiv.style.display = "block";  // Show message if no details
-                        }
-                    })
-                    .catch(error => {
-                        console.error("Error fetching drug details:", error);
-                        detailsDiv.innerHTML = "<p>Failed to load drug details.</p>";
-                        detailsDiv.style.display = "block";  // Show error message
-                    });
-            } else {
-                detailsDiv.style.display = "block";  // Show details if already fetched
+    
+            function showDetails(detailsDiv) {
+                // First, remove any inline height to calculate the full height
+                detailsDiv.style.height = "auto";
+                
+                // Get the full height of the element
+                // //var fullHeight = detailsDiv.scrollHeight + "px";
+    
+                // Set the initial height to 0 (for transition to work)
+                // //detailsDiv.style.height = "0";
+                
+                // Add the class to trigger opacity transition
+                detailsDiv.classList.add("show");
+    
+                // Use setTimeout to allow the browser to process the initial height = 0 before changing it
+                setTimeout(() => {
+                    detailsDiv.style.width = fullwidth;  // Transition to full height
+                }, 10);  // Slight delay to trigger CSS transition
             }
-        }
-
-        // Programmatically attach click events to all drug cards
-        var drugCards = document.querySelectorAll('.drug-card');
-        drugCards.forEach(function(card) {
-            var drugId = card.id.split('-')[2];  // Get drug ID from the card's ID
-            card.addEventListener('click', function() {
-                fetchDrugDetails(drugId);  // Call the function with the correct ID
+    
+            // Programmatically attach click events to all drug cards
+            var drugCards = document.querySelectorAll('.drug-card');
+            drugCards.forEach(function(card) {
+                var drugId = card.id.split('-')[2];  // Get drug ID from the card's ID
+                card.addEventListener('click', function() {
+                    fetchDrugDetails(drugId);  // Call the function with the correct ID
+                });
             });
+    
         });
-
-    });
-	
-	
-	</script>
+    </script>    
 	
 
 </head>
