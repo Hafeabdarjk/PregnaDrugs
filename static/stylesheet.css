@@ -42,6 +42,8 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	position: relative;
+    right: 35px;
 }
 
 .search-container button:hover {
@@ -230,9 +232,7 @@ a {
 	}
 
 	.search-container form {
-		max-width: 80%;
-		position: relative;
-    	left: -20px;
+		max-width: 90%;
 	}
 	.search-container input[type="text"]{
 		font-size: 14px;
