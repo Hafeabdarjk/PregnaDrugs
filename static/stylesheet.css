@@ -148,7 +148,7 @@ a {
 }
 
 .disease-shape, .class-shape {
-    width: 40vw;
+    width: 45vw;
     height: 20px;
     background-color: #ffcccb;
     border: 2px solid #99004d;
@@ -186,8 +186,8 @@ a {
 
 .drug-details {
     width: 66%; /* 2/3 of the screen */
-    margin: -45px 20px 20px;
-    padding: 56px;
+    margin: -45px 0px 20px;
+    padding: 40px 30px;
     background-color: #f9f9f9; /* Light background for the details */
     border: 1px solid #ddd;
     border-radius: 8px;
