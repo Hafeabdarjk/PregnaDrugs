@@ -10,7 +10,7 @@ body {
 /* Search Container Styles */
 .search-container {
 	background-color: #000066; /* Blue background for the search bar */
-	padding: 10px 20px;
+	padding: 15px 20px;
 	position: relative;
 	top: 0;
 	height: auto;
@@ -21,11 +21,13 @@ body {
 }
 
 .logo{
-	height: 50px;
-    position: absolute;
+	height: 60px;
+    position: fixed;
+	margin: 0px;
+	padding: 1px;
     float: left;
-    left: 5px;
-    top: 5px;
+    left: 4px;
+    top: 4px;
 }
 
 .search-container form {
