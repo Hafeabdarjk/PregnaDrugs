@@ -22,7 +22,7 @@ body {
 
 .logo{
 	height: 60px;
-    position: fixed;
+    position: absolute;
 	margin: 0px;
 	padding: 1px;
     float: left;
