@@ -11,12 +11,13 @@ body {
 .search-container {
 	background-color: #000066; /* Blue background for the search bar */
 	padding: 10px 20px;
-	position: fixed; /* Fixes the search bar at the top */
+	position: relative;
 	top: 0;
 	height: auto;
 	width: 100%;
 	z-index: 1000; /* Ensures it's on top of other content */
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	box-sizing: border-box;
 }
 
 .logo{
@@ -51,7 +52,6 @@ body {
 	align-items: center;
 	justify-content: center;
 	position: relative;
-    right: 35px;
 }
 
 .search-container button:hover {
@@ -63,11 +63,6 @@ body {
 	width: 20px;
 	height: 20px;
 	fill: white;
-}
-
-/* Style for the search input and suggestions */
-.search-container {
-    position: relative;
 }
 
 #suggestions-list {
