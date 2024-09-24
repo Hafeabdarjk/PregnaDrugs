@@ -3,7 +3,7 @@ import sqlite3
 
 app = Flask(__name__)
 
-# Connect to your database (modify as needed)
+# Connect to database
 def get_db_connection():
     conn = sqlite3.connect('database.db')
     conn.row_factory = sqlite3.Row  # For easy row handling
@@ -17,6 +17,7 @@ def systems():
     conn.close()
     return render_template("systems.html", systems=systems)
 
+# Route for searching by class
 @app.route('/search')
 def search():
     query = request.args.get('search', '').strip()  # Get the search term from the form input
@@ -36,6 +37,7 @@ def search():
         # If no class is found, you could return a "no results" page or redirect to a generic page
         return render_template('no_results.html', query=query)
 
+# Route for suggestions
 @app.route('/autocomplete')
 def autocomplete():
     search_term = request.args.get('term', '').strip()  # Get the typed input
@@ -87,6 +89,7 @@ def drugs():
     conn.close()
     return render_template('drugs.html', drugs=drugs)
     
+# Route for fetching drug details
 @app.route('/drug_details/<int:drug_id>')
 def get_drug_details(drug_id):
     conn = get_db_connection()
